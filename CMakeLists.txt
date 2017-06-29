@@ -5,6 +5,12 @@
 # Updated by jesnault (jerome.esnault@inria.fr) 2014-01-21
 # -----------------------------------------------------------------
 
+include("cmake/HunterGate.cmake")
+HunterGate(
+	URL "https://github.com/ruslo/hunter/archive/v0.19.20.tar.gz"
+	SHA1 "54c6499f084f17de02c7d081acd98583ac5d9442"
+)
+
 PROJECT(SuiteSparseProject)
 
 cmake_minimum_required(VERSION 2.8.10)
@@ -198,6 +204,7 @@ if(WITH_CUDA)
 	ENDIF(${CUDA_FOUND})
 endif()
 
+hunter_add_package(LAPACK)
 find_package(LAPACK CONFIG)
 if (LAPACK_FOUND)
 	message(STATUS "found lapack and blas config file. Linking targets lapack and blas")
